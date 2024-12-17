@@ -1,0 +1,65 @@
+/* ESERCIZIO 1: Selettore per selezionare l'<h1> nella sezione "hero" (jumbotron) */
+.jumbotron>h1 {
+    color: #333;
+    font-size: 3rem;
+}
+
+/* ESERCIZIO 2 e ESERCIZIO 6: Selettore per selezionare tutti i figli dell'elemento navbar e i link pari */
+.nav>span,
+.nav>span:nth-child(even) {
+    color: #007bff;
+}
+
+.nav>span:nth-child(even) {
+    color: #00ff00;
+    margin-right: 10px;
+}
+
+/* ESERCIZIO 3: Selettore per selezionare il link "Continua a leggere" del jumbotron */
+.jumbotron>a.font-weight-bold {
+    color: #ff0000;
+    text-decoration: underline;
+}
+
+/* ESERCIZIO 4 e ESERCIZIO 5: Selettore per selezionare il primo blog post e il suo <hr> */
+.blog-main>.blog-post:first-of-type {
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.blog-main>.blog-post:first-of-type>hr {
+    border-color: red;
+}
+
+/* ESERCIZIO 7: Selettore per selezionare tutti gli <li> della prima "ordered-list" della sidebar ("Archivio") */
+.blog-sidebar>ol.list-unstyled>li {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* ESERCIZIO 8: Selettore per selezionare l'autore del secondo blog post */
+.blog-main>.blog-post:nth-of-type(2)>.blog-post-meta>a {
+    color: #ff6600;
+}
+
+/* ESERCIZIO 9: Selettore per selezionare il secondo <li> della lista del terzo blog post */
+.blog-main>.blog-post:nth-of-type(3)>ul>li:nth-child(2) {
+    font-weight: bold;
+}
+
+/* ESERCIZIO 10: Selettore per selezionare il link "Torna su" */
+a.float-right.mb-3.mr-3 {
+    color: #0000ff;
+    font-size: 1.2rem;
+}
+
+/* ESERCIZIO 11: Selettore per selezionare il bottone "Nuovi" */
+.blog-pagination>.btn.btn-outline-secondary {
+    background-color: #dcdcdc;
+    border-color: #aaa;
+}
+
+/* ESERCIZIO 12: Selettore per selezionare il secondo link del footer */
+.blog-footer>p>a:nth-of-type(2) {
+    color: #ff00ff;
+}
