@@ -1,28 +1,31 @@
-// EXTRA 1: Rimuovere il link "Twitter" sotto la sezione "Altro" nell'elemento "aside" al caricamento della pagina
-window.addEventListener('DOMContentLoaded', () => {
-    const twitterLink = document.querySelector(".blog-sidebar .p-4 ol li a[href*='twitter']");
+// 1️⃣ Rimuove automaticamente il link "Twitter" sotto la sezione "Altro" al caricamento della pagina
+document.addEventListener('DOMContentLoaded', () => {
+    // Seleziona il link "Twitter" all'interno dell'elemento aside
+    const twitterLink = document.querySelector('.blog-sidebar ol.list-unstyled li a[href*="Twitter"]');
     if (twitterLink) {
-        twitterLink.parentElement.remove(); // Rimuove l'intero elemento <li> che contiene il link
+        twitterLink.parentElement.remove(); // Rimuove il padre <li> per eliminare l'intero elemento
     }
+});
 
-    // EXTRA 2: Rimuovere il corrispondente elemento padre dal DOM cliccando sul link "Continua a leggere"
-    const readMoreLinks = document.querySelectorAll("a.font-weight-bold, a.stretched-link");
-    readMoreLinks.forEach(link => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault(); // Evita il comportamento predefinito del link
-            const parentPost = link.closest('.blog-post, .col-md-6'); // Seleziona il contenitore padre
-            if (parentPost) {
-                parentPost.remove(); // Rimuove l'intero contenitore del post
-            }
-        });
+// 2️⃣ Rimuove il padre del link "Continua a leggere" quando viene cliccato
+const continuaALeggereLinks = document.querySelectorAll('.jumbotron p > a.font-weight-bold, .blog-main .blog-post a.stretched-link');
+
+continuaALeggereLinks.forEach(link => {
+    link.addEventListener('click', (event) => {
+        event.preventDefault(); // Impedisce il comportamento predefinito del link
+        const parentElement = link.closest('.blog-post, .jumbotron'); // Seleziona il contenitore padre più vicino (blog-post o jumbotron)
+        if (parentElement) {
+            parentElement.remove(); // Rimuove l'intero contenitore del post o del jumbotron
+        }
     });
+});
 
-    // EXTRA 3: Creare un alert col nome dell'autore ogni volta che il cursore passa sopra l'autore del post
-    const authorLinks = document.querySelectorAll(".blog-post-meta a");
-    authorLinks.forEach(authorLink => {
-        authorLink.addEventListener('mouseover', () => {
-            const authorName = authorLink.textContent.trim(); // Ottiene il nome dell'autore
-            alert(`Nome dell'autore: ${authorName}`);
-        });
+// 3️⃣ Mostra un alert con il nome dell'autore quando il cursore passa sopra il nome
+const authorLinks = document.querySelectorAll('.blog-post-meta a');
+
+authorLinks.forEach(authorLink => {
+    authorLink.addEventListener('mouseover', () => {
+        const authorName = authorLink.textContent.trim(); // Ottiene il testo (nome dell'autore) senza spazi
+        alert(`Nome dell'autore: ${authorName}`); // Mostra un alert con il nome dell'autore
     });
 });
